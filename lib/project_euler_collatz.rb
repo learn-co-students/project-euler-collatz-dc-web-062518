@@ -23,13 +23,14 @@ def collatz(n)
 end
 
 def longest_collatz
-  longest = collatz(13)
-  counter = 14
-  999986.times do
-    if collatz(counter).length > longest.length
-      longest = collatz(counter)
+  longest_length = 0
+  longest_start_number = 0
+  (500000..1000000).each do |start|
+    new_length = collatz(start).length
+    if new_length > longest_length
+      longest_length = new_length
+      longest_start_number = start
     end
-    counter += 1
   end
-  longest[0]
+  longest_start_number
 end
